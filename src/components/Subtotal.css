@@ -1,0 +1,202 @@
+.o {
+  text-transform: uppercase;
+}
+.rder-sub-total {
+  text-transform: capitalize;
+}
+.items,
+.order-sub-total {
+  align-self: stretch;
+  height: 20.9px;
+  position: relative;
+  line-height: 21.26px;
+  font-weight: 500;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-shrink: 0;
+}
+.order-sub-total {
+  white-space: nowrap;
+}
+.items {
+  font-size: var(--font-size-mini);
+  text-transform: capitalize;
+}
+.subtotal-label {
+  width: 153px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: var(--gap-12xs-8);
+}
+.subtotal-icon {
+  width: 26.9px;
+  height: 19.6px;
+  position: relative;
+  flex-shrink: 0;
+}
+.subtotal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: var(--padding-7xs-3) 0 0;
+}
+.subtotal-separator {
+  flex: 1;
+  position: relative;
+  line-height: 30px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+.subtotal-content-parent {
+  align-self: stretch;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: var(--gap-8xs-9);
+}
+.checkout-button {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 0 0 var(--padding-6xs-3);
+  box-sizing: border-box;
+  min-width: 110px;
+  text-align: center;
+  font-size: var(--font-size-10xl-3);
+  color: var(--black-);
+  font-family: var(--font-nunito);
+}
+.subtotal-details,
+.subtotal-details-wrapper {
+  display: flex;
+  flex-direction: row;
+  max-width: 100%;
+}
+.subtotal-details {
+  width: 376.8px;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: flex-start;
+  gap: var(--gap-35xl);
+}
+.subtotal-details-wrapper {
+  align-self: stretch;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 0 var(--padding-25xl);
+  box-sizing: border-box;
+}
+.proceed-to-checkout {
+  flex: 1;
+  position: relative;
+  font-size: var(--font-size-7xl);
+  line-height: 22px;
+  text-transform: capitalize;
+  font-weight: 500;
+  font-family: var(--heading-h1);
+  color: var(--mono-grey1);
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.checkout-content,
+.checkout-content-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+.checkout-content {
+  cursor: pointer;
+  border: 0;
+  padding: var(--padding-6xl-5) var(--padding-35xl);
+  background-color: transparent;
+  width: 376px;
+  border-radius: var(--br-6xs);
+  background: linear-gradient(131.74deg, #f97f51, #092c4c);
+  justify-content: flex-start;
+  white-space: nowrap;
+}
+.checkout-content-wrapper {
+  align-self: stretch;
+  justify-content: flex-end;
+  padding: 0 var(--padding-26xl);
+}
+.similar-items1 {
+  margin: 0;
+  align-self: stretch;
+  height: 29px;
+  position: relative;
+  font-size: var(--font-size-13xl);
+  line-height: 29px;
+  text-transform: capitalize;
+  font-weight: 500;
+  font-family: inherit;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.subtotal {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: var(--gap-4xl-7);
+  max-width: 100%;
+  text-align: left;
+  font-size: var(--egator-text-heading-6-bold-size);
+  color: var(--color-gray-200);
+  font-family: var(--heading-h1);
+}
+@media screen and (max-width: 1050px) {
+  .similar-items1 {
+    font-size: var(--font-size-7xl);
+    line-height: 21px;
+  }
+}
+@media screen and (max-width: 750px) {
+  .checkout-content-wrapper {
+    padding-left: var(--padding-3xl);
+    padding-right: var(--padding-3xl);
+    box-sizing: border-box;
+  }
+}
+@media screen and (max-width: 450px) {
+  .order-sub-total {
+    font-size: var(--egator-text-heading-7-bold-size);
+    line-height: 17px;
+  }
+  .subtotal-separator {
+    font-size: var(--font-size-4xl);
+    line-height: 23px;
+  }
+  .subtotal-details {
+    gap: var(--gap-8xl);
+  }
+  .checkout-content,
+  .subtotal-details-wrapper {
+    padding-left: var(--padding-3xl);
+    padding-right: var(--padding-3xl);
+    box-sizing: border-box;
+  }
+  .checkout-content {
+    padding-left: var(--padding-xl);
+    padding-right: var(--padding-xl);
+  }
+  .similar-items1 {
+    font-size: var(--font-size-lgi);
+    line-height: 16px;
+  }
+}

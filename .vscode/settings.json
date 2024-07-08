@@ -1,0 +1,21 @@
+{
+  "detectedConfig": {
+    "typescript": false,
+    "naming": "Pascal Case",
+    "unit": "em",
+    "framework": "react",
+    "styling": "CSS"
+  },
+  "locofyConfig": {
+    "project": "A1",
+    "id": "668b28859907cc62160dbabe",
+    "framework": "react",
+    "typescript": false,
+    "styling": "CSS",
+    "unit": "px",
+    "naming": "Pascal Case",
+    "path": "public/",
+    "componentsPath": "c:\\Users\\olaju\\Desktop\\tasktwo\\src\\components",
+    "screensPath": "c:\\Users\\olaju\\Desktop\\tasktwo\\src\\pages"
+  }
+}

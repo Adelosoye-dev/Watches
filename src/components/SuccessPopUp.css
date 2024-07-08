@@ -1,0 +1,58 @@
+.httpsapplottiefilescoman-icon {
+  height: 61.5px;
+  width: 87.1px;
+  position: relative;
+  object-fit: cover;
+}
+.product-successfully-added {
+  position: relative;
+  background: linear-gradient(131.74deg, #f97f51, #092c4c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.product-successfully-added-to-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  max-width: 100%;
+  z-index: 1;
+  margin-left: -19.6px;
+}
+.httpsapplottiefilescoman-parent,
+.success-pop-up {
+  max-width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+.httpsapplottiefilescoman-parent {
+  flex: 1;
+  flex-wrap: wrap;
+  padding: 0 var(--padding-xl);
+  row-gap: 20px;
+  flex-shrink: 0;
+}
+.success-pop-up {
+  width: 682px;
+  background-color: #f5e3dc;
+  padding: 11.7px 0 11.8px;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  font-size: 26px;
+  font-family: var(--font-nunito);
+}
+@media screen and (max-width: 450px) {
+  .product-successfully-added {
+    font-size: 21px;
+  }
+  .product-successfully-added-to-wrapper {
+    margin-left: 0;
+  }
+  .success-pop-up {
+    gap: 51px;
+  }
+}

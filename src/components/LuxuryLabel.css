@@ -1,0 +1,336 @@
+.luxury-1-14 {
+  height: 183px;
+  width: 160px;
+  position: relative;
+  object-fit: cover;
+}
+
+.epoch-elegance3 {
+  margin: 0;
+  align-self: stretch;
+  flex: 1;
+  position: relative;
+  font-size: inherit;
+  line-height: 27px;
+  text-transform: capitalize;
+  font-weight: 500;
+  font-family: inherit;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.epoch-elegance-wrapper {
+  align-self: stretch;
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0 0 0 var(--padding-11xs);
+}
+
+.delimiter {
+  align-self: stretch;
+  position: relative;
+  font-size: var(--egator-text-heading-7-bold-size);
+  line-height: 23px;
+  font-weight: 500;
+  background: linear-gradient(131.74deg, #f97f51, #092c4c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  white-space: pre-wrap;
+  text-align: center;
+}
+
+.item-actions,
+.watch-i-d-labels {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.watch-i-d-labels {
+  width: 188px;
+  flex: 1;
+  gap: var(--gap-7xs);
+}
+
+.item-actions {
+  height: 134px;
+  width: 304.4px;
+  padding: var(--padding-59xl) 0 0;
+  box-sizing: border-box;
+  text-align: left;
+  color: var(--color-gray-200);
+  font-family: var(--heading-h1);
+}
+
+.vuesaxlinearminus-icon4 {
+  height: 28.1px;
+  width: 28.1px;
+  position: relative;
+}
+
+.vuesaxlinearminus-wrapper1 {
+  height: 52.8px;
+  border-radius: 22.58px 0 0 22.58px;
+  background-color: var(--color-primary);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: var(--padding-mid-6) var(--padding-xs);
+  box-sizing: border-box;
+}
+
+.quantity1 {
+  position: relative;
+  line-height: 43px;
+  font-weight: 600;
+  display: inline-block;
+  min-width: 13px;
+}
+
+.quantity-separator {
+  background-color: var(--white-03);
+  padding: var(--padding-8xs-9) var(--padding-5xl);
+  z-index: 1;
+}
+
+.minus-button,
+.quantity-separator {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.vuesaxlinearadd-icon4 {
+  height: 28.1px;
+  width: 28.1px;
+  position: relative;
+  transform: rotate(-180deg);
+}
+
+.plus-button {
+  height: 52.8px;
+  border-radius: 22.58px 0 0 22.58px;
+  background-color: var(--linear-cart);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: var(--padding-mid-6) var(--padding-xs);
+  box-sizing: border-box;
+  transform: rotate(180deg);
+}
+
+.minus-button-container,
+.other-actions {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.other-actions {
+  width: 332.6px;
+  flex-direction: column;
+  padding: var(--padding-37xl-1) 0 0;
+  box-sizing: border-box;
+  max-width: 100%;
+  font-size: var(--font-size-2xl-1);
+}
+
+.favorite-icon {
+  width: 16.3px;
+  height: 14px;
+  position: relative;
+}
+
+.favorite-icon-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: var(--padding-8xs) 0 0;
+}
+
+.favorite-separator {
+  position: relative;
+  line-height: 24px;
+  font-weight: 600;
+  display: inline-block;
+  min-width: 113px;
+}
+
+.favorite-button {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: var(--gap-9xs);
+}
+
+.vuesaxlinearheart-icon3 {
+  width: 16px;
+  height: 16px;
+  position: relative;
+}
+
+.trash-label {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: var(--padding-9xs) 0 0;
+}
+
+.favorite3 {
+  position: relative;
+  line-height: 24px;
+  font-weight: 500;
+  display: inline-block;
+  min-width: 58px;
+}
+
+.remove-button {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: var(--gap-7xs);
+}
+
+.trash-button-child {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-right: 1px solid var(--white-07);
+  box-sizing: border-box;
+  width: 1px;
+  height: 17px;
+}
+
+.vuesaxlineartrash-icon3 {
+  position: absolute;
+  top: 8px;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  z-index: 1;
+}
+
+.trash-button {
+  height: 24px;
+  width: 16px;
+  position: relative;
+}
+
+.remove3 {
+  position: relative;
+  line-height: 24px;
+  font-weight: 500;
+  display: inline-block;
+  min-width: 59px;
+  z-index: 1;
+}
+
+.trash-button-container,
+.watch-i-d {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.watch-i-d {
+  flex-direction: column;
+  padding: var(--padding-9xs) 0 0;
+}
+
+.trash-button-container {
+  flex-direction: row;
+  gap: var(--gap-7xs);
+  margin-top: -4px;
+}
+
+.remove-button-container {
+  font-size: var(--egator-text-heading-7-bold-size);
+  color: var(--white-08);
+}
+
+.cart-action-row,
+.favorite-button-container,
+.luxury-label,
+.remove-button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.favorite-button-container {
+  gap: var(--gap-6xs);
+}
+
+.cart-action-row,
+.luxury-label {
+  padding: var(--padding-26xl) 0 0;
+}
+
+.luxury-label {
+  align-self: stretch;
+  backdrop-filter: blur(4px);
+  border-radius: var(--br-6xs);
+  background-color: var(--mono-grey1);
+  border: 1px solid var(--color-silver-200);
+  box-sizing: border-box;
+  overflow: hidden;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 var(--padding-47xl) 0 0;
+  max-width: 100%;
+  gap: var(--gap-xl);
+  cursor: pointer;
+  z-index: 2;
+  text-align: center;
+  font-size: var(--font-size-5xl);
+  color: var(--black-);
+  font-family: var(--font-nunito);
+}
+
+@media screen and (max-width: 1200px) {
+  .luxury-label {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-left: var(--padding-xl);
+    padding-right: var(--padding-xl);
+    box-sizing: border-box;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .epoch-elegance3 {
+    font-size: var(--font-size-lgi);
+    line-height: 21px;
+  }
+  .quantity1 {
+    font-size: var(--font-size-mid);
+    line-height: 34px;
+  }
+  .favorite-separator {
+    font-size: var(--font-size-lgi);
+    line-height: 19px;
+  }
+}
+
+/* New class to center quantity controls */
+.quantity-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--gap-7xs); /* Adjust the gap as needed */
+  padding: 70px 0;
+}
