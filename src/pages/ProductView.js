@@ -12,7 +12,6 @@ const ProductView = () => {
   const onCompanyContainerClick = useCallback(() => {
     navigate("/");
   }, [navigate]);
-
   return (
     <div className="product-view">
       <FrameComponent />

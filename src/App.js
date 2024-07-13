@@ -74,14 +74,5 @@ function App() {
       <Route path="/confirm-payment" element={<ConfirmPayment />} />
     </Routes>
   );
-
-  const App = () => {
-    return (
-      <div>
-        <LuxuryLabelComponent1 className="luxury-label-1" favoriteIcon="/icon1.png" />
-        <LuxuryLabelComponent2 className="luxury-label-2" favoriteIcon="/icon2.png" />
-      </div>
-    );
-  };
 }
 export default App;

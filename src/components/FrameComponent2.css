@@ -655,6 +655,7 @@
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
+  flex-wrap: wrap;
 }
 .component-24 {
   width: 400px;
@@ -671,7 +672,7 @@
   flex-direction: column;
 }
 .product-cards1 {
-  align-self: stretch;
+  align-self:stretch;
   height: 1132px;
   flex-direction: row;
   flex-wrap: wrap;
@@ -728,6 +729,7 @@
   display: flex;
   align-items: flex-start;
   max-width: 100%;
+  flex-wrap: wrap;
 }
 .watches-content {
   width: 1264px;
@@ -745,8 +747,9 @@
   font-size: var(--font-size-13xl);
   color: var(--color-firebrick);
   font-family: var(--heading-h1);
+  flex-wrap: wrap;
 }
-@media screen and (max-width: 825px) {
+@media screen and (max-width: 625px) {
   .view-products,
   .wristwatches1 {
     font-size: var(--font-size-7xl);

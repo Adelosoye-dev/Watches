@@ -1,4 +1,4 @@
-import { useCallback } from "react";
+import { useCallback, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Component3 from "../components/Component3";
 import Component2 from "../components/Component2";
@@ -6,8 +6,13 @@ import Component1 from "../components/Component1";
 import Component from "../components/Component";
 import ModernWithNewsletterDark from "../components/ModernWithNewsletterDark";
 import "./Shop.css";
+import axios from "axios";
 
 const Shop = () => {
+  const [displayedProducts, setDisplayedProducts] = useState([]); 
+  const [currentPage, setCurrentPage] = useState(1); 
+  const productsPerPage = 10;
+
   const navigate = useNavigate();
 
   const onFrameContainerClick = useCallback(() => {
@@ -22,6 +27,45 @@ const Shop = () => {
     navigate("/check-out");
   }, [navigate]);
 
+  const [products, setProducts] = useState([]);
+  console.log(products);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await axios.get(
+          `/products?organization_id=${process.env.REACT_APP_ORGANIZATION_ID}&Appid=${process.env.REACT_APP_APP_ID}&Apikey=${process.env.REACT_APP_API_KEY}`,
+          {
+            headers: {
+              "Access-Control-Allow-Origin": "*",
+              "Content-Type": "application/json",
+              "Access-Control-Allow-Origin": "*",
+              Accept: "*/*",
+              Connection: "keep-alive",
+            },
+            mode: "cors",
+          }
+        );
+
+        const data = response.data;
+
+        setProducts(data.items);
+        setDisplayedProducts(data.items.slice(0, productsPerPage));
+      } catch (error) {
+        setError(error);
+        console.log(error);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+  const loadMoreProducts = () => {
+    const newPage = currentPage + 1;
+    const newDisplayedProducts = products.slice(0, newPage * productsPerPage);
+    setDisplayedProducts(newDisplayedProducts);
+    setCurrentPage(newPage);
+  };
   return (
     <div className="shop1">
       <header className="frame-parent">
@@ -80,113 +124,19 @@ const Shop = () => {
           <div className="product-cards">
             <div className="frame-group">
               <div className="component-2-parent">
-                <Component3
-                  lux21="/lux2-1@2x.png"
-                  eternaClassic="Eterna Classic"
-                  prop="  1,350,000.00"
-                  onFrameContainerClick1={onFrameContainerClick}
-                />
-                <Component3
-                  lux21="/lux2-2@2x.png"
-                  eternaClassic="Vintage Vesper"
-                  prop="650,000.00"
-                  propFlex="1"
-                  propMinWidth="300px"
-                  propHeight="unset"
-                  propWidth="unset"
-                  propMargin="unset"
-                  propPosition="unset"
-                  propTop="unset"
-                  propLeft="unset"
-                  onFrameContainerClick1={onFrameContainerClick}
-                />
-                <Component2
-                  lux21="/lux2-1-1@2x.png"
-                  epochElegance="Epoch Elegance"
-                  onFrameContainerClick1={onFrameContainerClick}
-                />
-              </div>
-              <div className="frame-container">
-                <div className="component-2-group">
+                {displayedProducts.map((pro) => (
                   <Component3
-                    lux21="/lux2-2-1@2x.png"
-                    eternaClassic="Regal Remnant"
-                    prop="750,000.00"
-                    propFlex="1"
-                    propMinWidth="300px"
-                    propHeight="unset"
-                    propWidth="unset"
-                    propMargin="unset"
-                    propPosition="unset"
-                    propTop="unset"
-                    propLeft="unset"
+                    key={pro.id}
+                    // ="/lux2-1@2x.png"
+                    lux21={`http://api.timbu.cloud/images/${pro.photos[0].url}`}
+                    eternaClassic={pro.name}
+                    prop={pro.current_price[0]?.NGN?.[0] ?? "650,000"}
                     onFrameContainerClick1={onFrameContainerClick}
                   />
-                  <Component1 />
-                  <Component2
-                    lux21="/lux2-1-1@2x.png"
-                    epochElegance="Retro Radiance"
-                    propFlex="1"
-                    propMinWidth="300px"
-                    propWidth="unset"
-                    onFrameContainerClick1={onFrameContainerClick}
-                  />
-                </div>
-                <div className="component-2-container">
-                  <Component3
-                    lux21="/lux2-1@2x.png"
-                    eternaClassic="Eterna Classic"
-                    prop="  1,350,000.00"
-                    propFlex="unset"
-                    propMinWidth="unset"
-                    propHeight="550px"
-                    propWidth="400px"
-                    propMargin="unset"
-                    propPosition="unset"
-                    propTop="unset"
-                    propLeft="unset"
-                    onFrameContainerClick1={onFrameContainerClick}
-                  />
-                  <Component
-                    lux22="/lux2-2@2x.png"
-                    vintageVesper="Vintage Vesper"
-                    prop="650,000.00"
-                    onFrameContainerClick1={onFrameContainerClick}
-                  />
-                  <Component2
-                    lux21="/lux2-1-1@2x.png"
-                    epochElegance="Epoch Elegance"
-                    propFlex="unset"
-                    propMinWidth="unset"
-                    propWidth="400px"
-                    onFrameContainerClick1={onFrameContainerClick}
-                  />
-                  <Component
-                    lux22="/lux2-2-1@2x.png"
-                    vintageVesper="Regal Remnant"
-                    prop="750,000.00"
-                    propHeight="550px"
-                    propWidth="400px"
-                    propFlex="unset"
-                    propMinWidth="unset"
-                    onFrameContainerClick1={onFrameContainerClick}
-                  />
-                  <Component1
-                    propFlex="unset"
-                    propMinWidth="unset"
-                    propHeight="550px"
-                    propWidth="400px"
-                  />
-                  <Component2
-                    lux21="/lux2-1-1@2x.png"
-                    epochElegance="Retro Radiance"
-                    propFlex="unset"
-                    propMinWidth="unset"
-                    propWidth="400px"
-                    onFrameContainerClick1={onFrameContainerClick}
-                  />
-                </div>
+                ))}
               </div>
+              {displayedProducts.length < products.length && 
+              ( <button onClick={loadMoreProducts} className="load-more-button"> Load More Products </button> )}
             </div>
           </div>
         </section>

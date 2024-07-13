@@ -2,7 +2,7 @@ import React, { useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import "./FrameComponent.css";
-import SuccessPopUp from "./SuccessPopUp"; // Import your SuccessPopUp component
+
 
 const watches = [{}]
 const FrameComponent = ({ className = "" }) => {
@@ -68,12 +68,7 @@ const FrameComponent = ({ className = "" }) => {
           </div>
         </div>
       </header>
-      <div className={`add-to-cart-parent ${className}`}>
-        <a className="add-to-cart" onClick={handleAddToCartClick}>
-          Add to cart
-        </a>
-        {showPopup && <SuccessPopUp className="success-pop-up" onClose={closePopup} />}
-      </div>
+     
     </section>
   );
 };
