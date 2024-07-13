@@ -1,4 +1,4 @@
-import { useCallback } from "react";
+import React, { useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import "./FrameComponent3.css";
@@ -14,6 +14,12 @@ const FrameComponent3 = ({ className = "" }) => {
     navigate("/check-out");
   }, [navigate]);
 
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <header className={`dummy-logo-parent ${className}`}>
       <img
@@ -25,7 +31,7 @@ const FrameComponent3 = ({ className = "" }) => {
       <div className="frame-div">
         <div className="home-cart-content-parent">
           <div className="home-cart-content">
-            <a className="home1">Home</a>
+            <a className="home1" href="#">Home</a>
           </div>
           <a className="shop3" onClick={onShopTextClick}>
             Shop
@@ -38,15 +44,13 @@ const FrameComponent3 = ({ className = "" }) => {
         </div>
       </div>
       <div className="frame-wrapper1">
-        <div className="ellipse-container">
-          <img
-            className="ellipse-icon"
-            loading="lazy"
-            alt=""
-            src="/ellipse-3704@2x.png"
-          />
+        <div className="jumoke" onClick={toggleDropdown}>
+          <span className="jummy"></span>
+          <span className="jummy"></span>
+          <span className="jummy"></span>
         </div>
       </div>
+      <DropdownMenu isOpen={isOpen} setIsOpen={toggleDropdown} />
     </header>
   );
 };
@@ -56,3 +60,36 @@ FrameComponent3.propTypes = {
 };
 
 export default FrameComponent3;
+
+const DropdownMenu = ({ isOpen, setIsOpen }) => {
+  const handleItemClick = (item) => {
+    console.log(`Clicked on ${item}`);
+    setIsOpen(false);
+  };
+
+  return (
+    <div className="dropdown">
+      <button className="dropdown-toggle" onClick={() => setIsOpen(!isOpen)}>
+      
+      </button>
+      {isOpen && (
+        <ul className="dropdown-menu">
+          <li>
+            <a href="" onClick={() => handleItemClick("Home")}>Home</a>
+          </li>
+          <li>
+            <a href="" onClick={() => handleItemClick("Shop")}>Shop</a>
+          </li>
+          <li>
+            <a href="" onClick={() => handleItemClick("Cart")}>Cart</a>
+          </li>
+        </ul>
+      )}
+    </div>
+  );
+};
+
+DropdownMenu.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  setIsOpen: PropTypes.func.isRequired,
+};

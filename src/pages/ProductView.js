@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-import FrameComponent from "../components/FrameComponent";
+import FrameComponent3 from "../components/FrameComponent3";
 import ProductInfo from "../components/ProductInfo";
 import ItemsContainer from "../components/ItemsContainer";
 import ModernWithNewsletterDark1 from "../components/ModernWithNewsletterDark1";
@@ -14,7 +14,7 @@ const ProductView = () => {
   }, [navigate]);
   return (
     <div className="product-view">
-      <FrameComponent />
+      <FrameComponent3 />
       <div className="luxury-1-1-parent">
         <img className="luxury-1-1" alt="" src="/luxury-1-1@2x.png" />
         <div className="watch">Watch</div>

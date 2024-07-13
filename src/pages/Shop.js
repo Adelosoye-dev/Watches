@@ -67,7 +67,7 @@ const Shop = () => {
     setCurrentPage(newPage);
   };
   return (
-    <div className="shop1">
+    <div className="shop1" id="shop">
       <header className="frame-parent">
         <div className="dummy-logo-wrapper" onClick={onFrameContainerClick1}>
           <img
@@ -93,14 +93,7 @@ const Shop = () => {
           </div>
         </div>
         <div className="frame-wrapper">
-          <div className="ellipse-wrapper">
-            <img
-              className="frame-item"
-              loading="lazy"
-              alt=""
-              src="/ellipse-3704@2x.png"
-            />
-          </div>
+          
         </div>
       </header>
       <main className="watches-header-parent">

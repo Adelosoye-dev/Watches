@@ -41,10 +41,39 @@ const Component3 = ({
   ]);
 
   const navigate = useNavigate();
-
+  
   const onFrameContainerClick = useCallback(() => {
     navigate("/product-view");
   }, [navigate]);
+
+  const handleAddToCart = useCallback(() => {
+    const product = {
+      id: lux21, // Assuming lux21 is the product ID, adjust as needed
+      name: eternaClassic,
+      price: prop, // Assuming prop is the price, adjust as needed
+      quantity: 1, // Default quantity
+    };
+
+    // Retrieve existing cart from localStorage
+    const existingCart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    // Check if the product is already in the cart
+    const productIndex = existingCart.findIndex(item => item.id === product.id);
+
+    if (productIndex !== -1) {
+      // Product already exists in the cart, update quantity
+      existingCart[productIndex].quantity += 1;
+    } else {
+      // Product does not exist in the cart, add it
+      existingCart.push(product);
+    }
+
+    // Update localStorage with the new cart
+    localStorage.setItem("cart", JSON.stringify(existingCart));
+
+    // Optionally, notify the user that the item was added to the cart
+    alert("Product added to cart!");
+  }, [lux21, eternaClassic, prop]);
 
   return (
     <div className={`component-25 ${className}`} style={component2Style}>
@@ -67,7 +96,7 @@ const Component3 = ({
           </div>
         </div>
       </div>
-      <button className="add-to-cart-wrapper2">
+      <button className="add-to-cart-wrapper2" onClick={handleAddToCart}>
         <div className="add-to-cart6">Add to cart</div>
       </button>
     </div>
@@ -79,7 +108,6 @@ Component3.propTypes = {
   lux21: PropTypes.string,
   eternaClassic: PropTypes.string,
   prop: PropTypes.string,
-
   /** Style props */
   propFlex: PropTypes.any,
   propMinWidth: PropTypes.any,
@@ -89,7 +117,6 @@ Component3.propTypes = {
   propPosition: PropTypes.any,
   propTop: PropTypes.any,
   propLeft: PropTypes.any,
-
   /** Action props */
   onFrameContainerClick1: PropTypes.func,
 };

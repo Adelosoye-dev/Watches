@@ -102,12 +102,36 @@
   color: var(--black-);
   font-family: var(--heading-h1);
 }
+.jumoke{
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+}
+.jummy{
+  width: 40px;
+  height: 4px;
+  background-color: black;
+  display: block;
+}
+.dropdown-toggle{
+  display: none;
+}
 @media screen and (max-width: 825px) {
   .home-cart-content-parent {
     display: none;
+
   }
   .frame-div {
     width: 171.2px;
+    display: flex;
+  }
+  .jumoke{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .dropdown-toggle{
+    display: flex;
   }
   .dummy-logo-parent {
     padding-left: var(--padding-46xl);
