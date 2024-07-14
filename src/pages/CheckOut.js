@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-import FrameComponent3 from "../components/FrameComponent3";
+import FrameComponent from "../components/FrameComponent";
 import CartItemDetails from "../components/CartItemDetails";
 import Subtotal from "../components/Subtotal";
 import Component3 from "../components/Component3";
@@ -22,7 +22,7 @@ const CheckOut = () => {
 
   return (
     <div className="check-out">
-      <FrameComponent3 />
+      <FrameComponent />
       <div className="luxury-1-1-group">
         <img className="luxury-1-11" alt="" src="/luxury-1-1@2x.png" />
         <div className="watch1">Watch</div>
