@@ -73,7 +73,7 @@ const Component3 = ({
 
     // Optionally, notify the user that the item was added to the cart
     alert("Product added to cart!");
-  }, [lux21, eternaClassic, prop]);
+  }, [lux21, eternaClassic, prop, pro]);
 
   return (
     <div className={`component-25 ${className}`} style={component2Style}>
@@ -107,8 +107,7 @@ Component3.propTypes = {
   className: PropTypes.string,
   lux21: PropTypes.string,
   eternaClassic: PropTypes.string,
-  prop: PropTypes.string,
-  /** Style props */
+  prop: PropTypes.oneOfType([PropTypes.string, PropTypes.number]), // Update to accept string or number
   propFlex: PropTypes.any,
   propMinWidth: PropTypes.any,
   propHeight: PropTypes.any,
@@ -117,9 +116,8 @@ Component3.propTypes = {
   propPosition: PropTypes.any,
   propTop: PropTypes.any,
   propLeft: PropTypes.any,
-  /** Action props */
   onFrameContainerClick1: PropTypes.func,
-  pro: PropTypes.any,
+  pro: PropTypes.object,
 };
 
 export default Component3;
