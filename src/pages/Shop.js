@@ -32,6 +32,7 @@ const Shop = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
+        
         const response = await axios.get(
           `/products?organization_id=${process.env.REACT_APP_ORGANIZATION_ID}&Appid=${process.env.REACT_APP_APP_ID}&Apikey=${process.env.REACT_APP_API_KEY}`,
           {
@@ -41,20 +42,19 @@ const Shop = () => {
           }
         );
 
-        // Log the entire response for debugging purposes
         console.log("API Response:", response);
+      
 
-        // Check if the response contains valid JSON data
-        if (response.data && response.data.items && Array.isArray(response.data.items)) {
+        if(response.status === 200){
           setProducts(response.data.items);
           setDisplayedProducts(response.data.items.slice(0, productsPerPage));
         } else {
           console.error("Invalid API response format:", response);
-          // Handle error state if needed, e.g., setProducts([]) or display an error message
+
         }
       } catch (error) {
         console.error("Error fetching products:", error);
-        // Handle error state if needed
+        
       }
     };
 

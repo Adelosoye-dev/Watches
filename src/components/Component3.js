@@ -67,14 +67,10 @@ const Component3 = ({
     alert("Product added to cart!");
   }, [lux21, eternaClassic, prop, pro]);
 
-  // Example of useEffect usage (ensure proper dependency array)
+  
   useEffect(() => {
-    // Example of async operation triggering state update
-    // Ensure dependencies are properly defined to avoid infinite loops
-    // fetchSomeData().then(data => {
-    //   setState(data);
-    // });
-  }, []); // Ensure dependency array is properly defined to avoid infinite loops
+    
+  }, []); 
 
   return (
     <div className={`component-25 ${className}`} style={component2Style}>
@@ -120,5 +116,6 @@ Component3.propTypes = {
   onFrameContainerClick1: PropTypes.func,
   pro: PropTypes.object,
 };
+console.log("Component3 is rendering!")
 
 export default Component3;
