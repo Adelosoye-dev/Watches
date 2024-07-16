@@ -1,4 +1,4 @@
-import { useCallback } from "react";
+import { useCallback, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import FrameComponent from "../components/FrameComponent";
 import CartItemDetails from "../components/CartItemDetails";
@@ -19,6 +19,15 @@ const CheckOut = () => {
   const onCompanyContainerClick = useCallback(() => {
     navigate("/");
   }, [navigate]);
+
+  const [cart, setCartcount] = useState([]);
+
+  useEffect(() => {
+    const cart = localStorage.getItem("cart");
+    if (cart) {
+      setCartcount(JSON.parse(cart));
+    }
+  }, [cart]);
 
   return (
     <div className="check-out">

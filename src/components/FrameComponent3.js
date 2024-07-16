@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import "./FrameComponent3.css";
@@ -20,6 +20,14 @@ const FrameComponent3 = ({ className = "" }) => {
     setIsOpen(!isOpen);
   };
 
+  const [cart, setCart] = useState([]);
+
+  useEffect(() => {
+    const cart = localStorage.getItem("cart");
+    if (cart) {
+      setCart(JSON.parse(cart));
+    }
+  }, [cart]);
   return (
     <header className={`dummy-logo-parent ${className}`}>
       <img
@@ -31,14 +39,16 @@ const FrameComponent3 = ({ className = "" }) => {
       <div className="frame-div">
         <div className="home-cart-content-parent">
           <div className="home-cart-content">
-            <a className="home1" href="#">Home</a>
+            <a className="home1" href="#">
+              Home
+            </a>
           </div>
           <a className="shop3" onClick={onShopTextClick}>
             Shop
           </a>
           <div className="home-cart-content1">
             <a className="cart01" onClick={onCart0TextClick}>
-              Cart(0)
+              Cart {cart.length ? cart.length : 0}
             </a>
           </div>
         </div>
@@ -69,19 +79,26 @@ const DropdownMenu = ({ isOpen, setIsOpen }) => {
 
   return (
     <div className="dropdown">
-      <button className="dropdown-toggle" onClick={() => setIsOpen(!isOpen)}>
-      
-      </button>
+      <button
+        className="dropdown-toggle"
+        onClick={() => setIsOpen(!isOpen)}
+      ></button>
       {isOpen && (
         <ul className="dropdown-menu">
           <li>
-            <a href="" onClick={() => handleItemClick("Home")}>Home</a>
+            <a href="" onClick={() => handleItemClick("Home")}>
+              Home
+            </a>
           </li>
           <li>
-            <a href="" onClick={() => handleItemClick("Shop")}>Shop</a>
+            <a href="" onClick={() => handleItemClick("Shop")}>
+              Shop
+            </a>
           </li>
           <li>
-            <a href="" onClick={() => handleItemClick("Cart")}>Cart</a>
+            <a href="" onClick={() => handleItemClick("Cart")}>
+              Cart
+            </a>
           </li>
         </ul>
       )}

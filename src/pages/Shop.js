@@ -1,16 +1,13 @@
 import { useCallback, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Component3 from "../components/Component3";
-import Component2 from "../components/Component2";
-import Component1 from "../components/Component1";
-import Component from "../components/Component";
 import ModernWithNewsletterDark from "../components/ModernWithNewsletterDark";
 import "./Shop.css";
 import axios from "axios";
 
 const Shop = () => {
-  const [displayedProducts, setDisplayedProducts] = useState([]); 
-  const [currentPage, setCurrentPage] = useState(1); 
+  const [displayedProducts, setDisplayedProducts] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 10;
 
   const navigate = useNavigate();
@@ -28,7 +25,7 @@ const Shop = () => {
   }, [navigate]);
 
   const [products, setProducts] = useState([]);
-  console.log(products);
+
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -54,12 +51,21 @@ const Shop = () => {
         setDisplayedProducts(data.items.slice(0, productsPerPage));
       } catch (error) {
         setError(error);
-        console.log(error);
       }
     };
 
     fetchProducts();
   }, []);
+
+  const [cart, setCart] = useState([]);
+
+  useEffect(() => {
+    const cart = localStorage.getItem("cart");
+    if (cart) {
+      setCart(JSON.parse(cart));
+    }
+  }, [cart]);
+
   const loadMoreProducts = () => {
     const newPage = currentPage + 1;
     const newDisplayedProducts = products.slice(0, newPage * productsPerPage);
@@ -87,14 +93,12 @@ const Shop = () => {
             <a className="shop2">Shop</a>
             <div className="home-cart-buttons1">
               <a className="cart0" onClick={onCart0TextClick}>
-                Cart(0)
+                Cart {cart.length ? cart.length : 0}
               </a>
             </div>
           </div>
         </div>
-        <div className="frame-wrapper">
-          
-        </div>
+        <div className="frame-wrapper"></div>
       </header>
       <main className="watches-header-parent">
         <div className="watches-header">
@@ -125,11 +129,16 @@ const Shop = () => {
                     eternaClassic={pro.name}
                     prop={pro.current_price[0]?.NGN?.[0] ?? "650,000"}
                     onFrameContainerClick1={onFrameContainerClick}
+                    pro={pro}
                   />
                 ))}
               </div>
-              {displayedProducts.length < products.length && 
-              ( <button onClick={loadMoreProducts} className="load-more-button"> Load More Products </button> )}
+              {displayedProducts.length < products.length && (
+                <button onClick={loadMoreProducts} className="load-more-button">
+                  {" "}
+                  Load More Products{" "}
+                </button>
+              )}
             </div>
           </div>
         </section>

@@ -1,10 +1,9 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import "./FrameComponent.css";
 
-
-const watches = [{}]
+const watches = [{}];
 const FrameComponent = ({ className = "" }) => {
   const [showPopup, setShowPopup] = useState(false); // State to manage popup visibility
   const navigate = useNavigate();
@@ -29,6 +28,15 @@ const FrameComponent = ({ className = "" }) => {
     navigate("/check-out");
   }, [navigate]);
 
+  const [cart, setCartcount] = useState([]);
+
+  useEffect(() => {
+    const cart = localStorage.getItem("cart");
+    if (cart) {
+      setCartcount(JSON.parse(cart));
+    }
+  }, [cart]);
+
   return (
     <section className={`product-view-inner ${className}`}>
       <header className="frame-header">
@@ -52,7 +60,7 @@ const FrameComponent = ({ className = "" }) => {
             </a>
             <div className="home-cart-container1">
               <a className="cart02" onClick={onCart0TextClick}>
-                Cart(2)
+                Cart {cart.length}
               </a>
             </div>
           </div>
@@ -68,7 +76,6 @@ const FrameComponent = ({ className = "" }) => {
           </div>
         </div>
       </header>
-     
     </section>
   );
 };

@@ -17,6 +17,7 @@ const Component3 = ({
   propTop,
   propLeft,
   onFrameContainerClick1,
+  pro,
 }) => {
   const component2Style = useMemo(() => {
     return {
@@ -41,24 +42,23 @@ const Component3 = ({
   ]);
 
   const navigate = useNavigate();
-  
-  const onFrameContainerClick = useCallback(() => {
-    navigate("/product-view");
-  }, [navigate]);
 
   const handleAddToCart = useCallback(() => {
     const product = {
       id: lux21, // Assuming lux21 is the product ID, adjust as needed
       name: eternaClassic,
       price: prop, // Assuming prop is the price, adjust as needed
-      quantity: 1, // Default quantity
+      quantity: 1,
+      ...pro,
     };
 
     // Retrieve existing cart from localStorage
     const existingCart = JSON.parse(localStorage.getItem("cart")) || [];
 
     // Check if the product is already in the cart
-    const productIndex = existingCart.findIndex(item => item.id === product.id);
+    const productIndex = existingCart.findIndex(
+      (item) => item.id === product.id
+    );
 
     if (productIndex !== -1) {
       // Product already exists in the cart, update quantity
@@ -119,6 +119,7 @@ Component3.propTypes = {
   propLeft: PropTypes.any,
   /** Action props */
   onFrameContainerClick1: PropTypes.func,
+  pro: PropTypes.any,
 };
 
 export default Component3;
