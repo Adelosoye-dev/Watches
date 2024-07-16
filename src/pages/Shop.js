@@ -41,12 +41,15 @@ const Shop = () => {
           }
         );
 
-        const data = response.data;
-        if (data && data.items && Array.isArray(data.items)) {
-          setProducts(data.items);
-          setDisplayedProducts(data.items.slice(0, productsPerPage));
+        // Log the entire response for debugging purposes
+        console.log("API Response:", response);
+
+        // Check if the response contains valid JSON data
+        if (response.data && response.data.items && Array.isArray(response.data.items)) {
+          setProducts(response.data.items);
+          setDisplayedProducts(response.data.items.slice(0, productsPerPage));
         } else {
-          console.error("No items found in response:", data);
+          console.error("Invalid API response format:", response);
           // Handle error state if needed, e.g., setProducts([]) or display an error message
         }
       } catch (error) {
