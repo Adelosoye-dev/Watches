@@ -1,15 +1,14 @@
-import { useCallback, useState, useEffect } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Component3 from "../components/Component3";
 import ModernWithNewsletterDark from "../components/ModernWithNewsletterDark";
-import "./Shop.css";
 import axios from "axios";
+import "./Shop.css";
 
 const Shop = () => {
   const [displayedProducts, setDisplayedProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 10;
-
   const navigate = useNavigate();
 
   const onFrameContainerClick = useCallback(() => {
@@ -35,11 +34,7 @@ const Shop = () => {
           {
             headers: {
               "Content-Type": "application/json",
-              Accept: "*/*",
-              // Remove duplicate header
-              // "Access-Control-Allow-Origin": "*",
             },
-            mode: "cors",
           }
         );
 
@@ -60,7 +55,7 @@ const Shop = () => {
     if (cartFromStorage) {
       setCart(JSON.parse(cartFromStorage));
     } else {
-      setCart([]); // Initialize cart as empty array if not found in localStorage
+      setCart([]);
     }
   }, []);
 
@@ -123,9 +118,9 @@ const Shop = () => {
                 {displayedProducts.map((pro) => (
                   <Component3
                     key={pro.id}
-                    lux21={`http://api.timbu.cloud/images/${pro.photos[0].url}`}
+                    lux21={`http://api.timbu.cloud/images/${pro.photos?.[0]?.url}`}
                     eternaClassic={pro.name}
-                    prop={pro.current_price[0]?.NGN?.[0] ?? "650,000"}
+                    prop={pro.current_price?.[0]?.NGN?.[0] ?? "650,000"}
                     onFrameContainerClick1={onFrameContainerClick}
                     pro={pro}
                   />
