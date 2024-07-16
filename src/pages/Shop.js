@@ -42,11 +42,12 @@ const Shop = () => {
         );
 
         const data = response.data;
-        if (data.items) {
+        if (data && data.items && Array.isArray(data.items)) {
           setProducts(data.items);
           setDisplayedProducts(data.items.slice(0, productsPerPage));
         } else {
           console.error("No items found in response:", data);
+          // Handle error state if needed, e.g., setProducts([]) or display an error message
         }
       } catch (error) {
         console.error("Error fetching products:", error);
