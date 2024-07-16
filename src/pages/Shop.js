@@ -25,8 +25,7 @@ const Shop = () => {
   }, [navigate]);
 
   const [products, setProducts] = useState([]);
-
-  const [error, setError] = useState(null);
+  const [cart, setCart] = useState([]);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -35,36 +34,35 @@ const Shop = () => {
           `/products?organization_id=${process.env.REACT_APP_ORGANIZATION_ID}&Appid=${process.env.REACT_APP_APP_ID}&Apikey=${process.env.REACT_APP_API_KEY}`,
           {
             headers: {
-              "Access-Control-Allow-Origin": "*",
               "Content-Type": "application/json",
-              "Access-Control-Allow-Origin": "*",
               Accept: "*/*",
-              Connection: "keep-alive",
+              // Remove duplicate header
+              // "Access-Control-Allow-Origin": "*",
             },
             mode: "cors",
           }
         );
 
         const data = response.data;
-
         setProducts(data.items);
         setDisplayedProducts(data.items.slice(0, productsPerPage));
       } catch (error) {
-        setError(error);
+        console.error("Error fetching products:", error);
+        // Handle error state if needed
       }
     };
 
     fetchProducts();
   }, []);
 
-  const [cart, setCart] = useState([]);
-
   useEffect(() => {
-    const cart = localStorage.getItem("cart");
-    if (cart) {
-      setCart(JSON.parse(cart));
+    const cartFromStorage = localStorage.getItem("cart");
+    if (cartFromStorage) {
+      setCart(JSON.parse(cartFromStorage));
+    } else {
+      setCart([]); // Initialize cart as empty array if not found in localStorage
     }
-  }, [cart]);
+  }, []);
 
   const loadMoreProducts = () => {
     const newPage = currentPage + 1;
@@ -72,6 +70,7 @@ const Shop = () => {
     setDisplayedProducts(newDisplayedProducts);
     setCurrentPage(newPage);
   };
+
   return (
     <div className="shop1" id="shop">
       <header className="frame-parent">
@@ -93,7 +92,7 @@ const Shop = () => {
             <a className="shop2">Shop</a>
             <div className="home-cart-buttons1">
               <a className="cart0" onClick={onCart0TextClick}>
-                Cart {cart.length ? cart.length : 0}
+                Cart {cart.length}
               </a>
             </div>
           </div>
@@ -124,7 +123,6 @@ const Shop = () => {
                 {displayedProducts.map((pro) => (
                   <Component3
                     key={pro.id}
-                    // ="/lux2-1@2x.png"
                     lux21={`http://api.timbu.cloud/images/${pro.photos[0].url}`}
                     eternaClassic={pro.name}
                     prop={pro.current_price[0]?.NGN?.[0] ?? "650,000"}
@@ -135,8 +133,7 @@ const Shop = () => {
               </div>
               {displayedProducts.length < products.length && (
                 <button onClick={loadMoreProducts} className="load-more-button">
-                  {" "}
-                  Load More Products{" "}
+                  Load More Products
                 </button>
               )}
             </div>
