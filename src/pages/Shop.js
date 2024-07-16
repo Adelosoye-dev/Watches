@@ -24,7 +24,10 @@ const Shop = () => {
   }, [navigate]);
 
   const [products, setProducts] = useState([]);
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState(() => {
+    const cartFromStorage = localStorage.getItem("cart");
+    return cartFromStorage ? JSON.parse(cartFromStorage) : [];
+  });
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -39,8 +42,12 @@ const Shop = () => {
         );
 
         const data = response.data;
-        setProducts(data.items);
-        setDisplayedProducts(data.items.slice(0, productsPerPage));
+        if (data.items) {
+          setProducts(data.items);
+          setDisplayedProducts(data.items.slice(0, productsPerPage));
+        } else {
+          console.error("No items found in response:", data);
+        }
       } catch (error) {
         console.error("Error fetching products:", error);
         // Handle error state if needed
@@ -48,15 +55,6 @@ const Shop = () => {
     };
 
     fetchProducts();
-  }, []);
-
-  useEffect(() => {
-    const cartFromStorage = localStorage.getItem("cart");
-    if (cartFromStorage) {
-      setCart(JSON.parse(cartFromStorage));
-    } else {
-      setCart([]);
-    }
   }, []);
 
   const loadMoreProducts = () => {
