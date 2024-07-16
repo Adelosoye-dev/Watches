@@ -15,19 +15,52 @@ const FrameComponent3 = ({ className = "" }) => {
   }, [navigate]);
 
   const [isOpen, setIsOpen] = useState(false);
+  const [cart, setCart] = useState([]);
+
+  useEffect(() => {
+    // Fetch cart data from localStorage only on component mount
+    const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
+    setCart(storedCart);
+  }, []); // Empty dependency array ensures useEffect runs only once
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
 
-  const [cart, setCart] = useState([]);
+  const DropdownMenu = () => {
+    const handleItemClick = (item) => {
+      console.log(`Clicked on ${item}`);
+      setIsOpen(false);
+    };
 
-  useEffect(() => {
-    const cart = localStorage.getItem("cart");
-    if (cart) {
-      setCart(JSON.parse(cart));
-    }
-  }, [cart]);
+    return (
+      <div className="dropdown">
+        <button className="dropdown-toggle" onClick={() => setIsOpen(!isOpen)}>
+          Toggle Dropdown
+        </button>
+        {isOpen && (
+          <ul className="dropdown-menu">
+            <li>
+              <a href="#" onClick={() => handleItemClick("Home")}>
+                Home
+              </a>
+            </li>
+            <li>
+              <a href="#" onClick={() => handleItemClick("Shop")}>
+                Shop
+              </a>
+            </li>
+            <li>
+              <a href="#" onClick={() => handleItemClick("Cart")}>
+                Cart
+              </a>
+            </li>
+          </ul>
+        )}
+      </div>
+    );
+  };
+
   return (
     <header className={`dummy-logo-parent ${className}`}>
       <img
@@ -60,7 +93,7 @@ const FrameComponent3 = ({ className = "" }) => {
           <span className="jummy"></span>
         </div>
       </div>
-      <DropdownMenu isOpen={isOpen} setIsOpen={toggleDropdown} />
+      <DropdownMenu />
     </header>
   );
 };
@@ -70,43 +103,3 @@ FrameComponent3.propTypes = {
 };
 
 export default FrameComponent3;
-
-const DropdownMenu = ({ isOpen, setIsOpen }) => {
-  const handleItemClick = (item) => {
-    console.log(`Clicked on ${item}`);
-    setIsOpen(false);
-  };
-
-  return (
-    <div className="dropdown">
-      <button
-        className="dropdown-toggle"
-        onClick={() => setIsOpen(!isOpen)}
-      ></button>
-      {isOpen && (
-        <ul className="dropdown-menu">
-          <li>
-            <a href="" onClick={() => handleItemClick("Home")}>
-              Home
-            </a>
-          </li>
-          <li>
-            <a href="" onClick={() => handleItemClick("Shop")}>
-              Shop
-            </a>
-          </li>
-          <li>
-            <a href="" onClick={() => handleItemClick("Cart")}>
-              Cart
-            </a>
-          </li>
-        </ul>
-      )}
-    </div>
-  );
-};
-
-DropdownMenu.propTypes = {
-  isOpen: PropTypes.bool.isRequired,
-  setIsOpen: PropTypes.func.isRequired,
-};

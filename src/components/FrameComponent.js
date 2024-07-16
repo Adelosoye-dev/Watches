@@ -3,19 +3,18 @@ import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import "./FrameComponent.css";
 
-const watches = [{}];
 const FrameComponent = ({ className = "" }) => {
-  const [showPopup, setShowPopup] = useState(false); // State to manage popup visibility
   const navigate = useNavigate();
-  const [cart_, setCart] = useState(0); // State to manage popup visibility
-  const handleAddToCartClick = () => {
-    setShowPopup(true); // Display the popup when "Add to cart" is clicked
-  };
+  
+  const [cart, setCart] = useState([]); // State to manage cart items
 
-  const closePopup = () => {
-    setShowPopup(false); // Function to close the popup
-  };
+  // Effect to load cart items from localStorage on component mount
+  useEffect(() => {
+    const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
+    setCart(storedCart);
+  }, []); // Empty dependency array ensures useEffect runs only once on mount
 
+  // Navigation callbacks
   const onFrameContainerClick = useCallback(() => {
     navigate("/");
   }, [navigate]);
@@ -24,18 +23,9 @@ const FrameComponent = ({ className = "" }) => {
     navigate("/shop");
   }, [navigate]);
 
-  const onCart0TextClick = useCallback(() => {
-    navigate("/check-out");
+  const onCartTextClick = useCallback(() => {
+    navigate("/checkout");
   }, [navigate]);
-
-  const [cart, setCartcount] = useState([]);
-
-  useEffect(() => {
-    const cart = localStorage.getItem("cart");
-    if (cart) {
-      setCartcount(JSON.parse(cart));
-    }
-  }, [cart]);
 
   return (
     <section className={`product-view-inner ${className}`}>
@@ -59,7 +49,7 @@ const FrameComponent = ({ className = "" }) => {
               Shop
             </a>
             <div className="home-cart-container1">
-              <a className="cart02" onClick={onCart0TextClick}>
+              <a className="cart02" onClick={onCartTextClick}>
                 Cart {cart.length}
               </a>
             </div>

@@ -1,4 +1,4 @@
-import { useCallback, useState, useEffect } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import FrameComponent from "../components/FrameComponent";
 import CartItemDetails from "../components/CartItemDetails";
@@ -20,14 +20,14 @@ const CheckOut = () => {
     navigate("/");
   }, [navigate]);
 
-  const [cart, setCartcount] = useState([]);
+  const [cartItems, setCartItems] = useState([]);
 
   useEffect(() => {
-    const cart = localStorage.getItem("cart");
-    if (cart) {
-      setCartcount(JSON.parse(cart));
+    const storedCart = localStorage.getItem("cart");
+    if (storedCart) {
+      setCartItems(JSON.parse(storedCart));
     }
-  }, [cart]);
+  }, []); // Empty dependency array ensures useEffect runs only once on mount
 
   return (
     <div className="check-out">
@@ -71,29 +71,21 @@ const CheckOut = () => {
       </div>
       <section className="cart-content-wrapper">
         <div className="cart-content">
-          <CartItemDetails />
-          <Subtotal />
+          <CartItemDetails cartItems={cartItems} />
+          <Subtotal cartItems={cartItems} />
           <div className="similar-products">
             <Component3
               lux21="/lux2-1@2x.png"
               eternaClassic="Eterna Classic"
-              prop="  1,350,000.00"
+              prop="1,350,000.00"
               propFlex="1"
               propMinWidth="300px"
-              propHeight="unset"
-              propWidth="unset"
-              propMargin="unset"
-              propPosition="unset"
-              propTop="unset"
-              propLeft="unset"
               onFrameContainerClick1={onProductDetailsContainerClick}
             />
             <Component
               lux22="/lux2-2@2x.png"
               vintageVesper="Vintage Vesper"
               prop="650,000.00"
-              propHeight="unset"
-              propWidth="unset"
               propFlex="1"
               propMinWidth="300px"
               onFrameContainerClick1={onProductDetailsContainerClick}
@@ -103,7 +95,6 @@ const CheckOut = () => {
               epochElegance="Epoch Elegance"
               propFlex="1"
               propMinWidth="300px"
-              propWidth="unset"
               onFrameContainerClick1={onProductDetailsContainerClick}
             />
           </div>

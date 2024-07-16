@@ -18,6 +18,14 @@ const Component2 = ({
     width: propWidth,
   };
 
+  const handleAddToCartClick = () => {
+    if (onAddToCartClick) {
+      onAddToCartClick();
+    } else {
+      console.warn("onAddToCartClick function is not provided.");
+    }
+  };
+
   return (
     <div className={`component-26 ${className}`} style={component2Style}>
       <div className="lux2-1-parent1" onClick={onFrameContainerClick1}>
@@ -39,7 +47,7 @@ const Component2 = ({
           </div>
         </div>
       </div>
-      <button className="add-to-cart-wrapper3" onClick={onAddToCartClick}>
+      <button className="add-to-cart-wrapper3" onClick={handleAddToCartClick}>
         <div className="add-to-cart7">Add to cart</div>
       </button>
     </div>
@@ -54,7 +62,7 @@ Component2.propTypes = {
   propMinWidth: PropTypes.any,
   propWidth: PropTypes.any,
   onFrameContainerClick1: PropTypes.func,
-  onAddToCartClick: PropTypes.func.isRequired,
+  onAddToCartClick: PropTypes.func, 
 };
 
 export default Component2;
